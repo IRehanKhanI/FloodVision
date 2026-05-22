@@ -35,6 +35,8 @@ export default function AIAnalysisView() {
 
   // Track the current panorama position so Analyze uses wherever the user panned to
   const currentLocationRef = useRef(DEFAULT_LOCATION);
+  // Track the current heading so the static image faces the same direction
+  const currentHeadingRef = useRef(34); // matches initial pov heading
 
   const [result,  setResult]  = useState<AnalysisResult | null>(null);
   const [loading, setLoading] = useState(false);
@@ -51,12 +53,14 @@ export default function AIAnalysisView() {
     setResult(null);
 
     const loc = currentLocationRef.current;
+    const heading = currentHeadingRef.current;
 
-    // Build Street View Static API URL from current panorama position
+    // Build Street View Static API URL using current panorama position AND heading
     const imageUrl =
       `https://maps.googleapis.com/maps/api/streetview` +
       `?size=640x480` +
       `&location=${loc.lat},${loc.lng}` +
+      `&heading=${Math.round(heading)}` +
       `&fov=90` +
       `&pitch=0` +
       `&key=${mapsApiKey}`;
@@ -137,7 +141,7 @@ export default function AIAnalysisView() {
 
       map.setStreetView(panorama);
 
-      // ── Sync location when panorama changes ────────────────────────────────
+      // ── Sync location AND heading when panorama changes ────────────────────
       const updateLocation = () => {
         const pos = panorama.getPosition();
         if (pos) {
@@ -148,7 +152,15 @@ export default function AIAnalysisView() {
         }
       };
 
+      const updatePov = () => {
+        const pov = panorama.getPov();
+        if (pov) {
+          currentHeadingRef.current = pov.heading;
+        }
+      };
+
       panorama.addListener('position_changed', updateLocation);
+      panorama.addListener('pov_changed', updatePov); // ← captures heading as user pans
 
       // Sync when marker is dragged
       marker.addListener('dragend', () => {
