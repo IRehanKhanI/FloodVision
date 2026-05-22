@@ -1,0 +1,6 @@
+{
+  "name": "Flood Vision",
+  "description": "Interactive AI-driven flood prediction, live telemetry dashboard, and smart risk-aware routing system.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
