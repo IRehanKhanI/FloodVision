@@ -2,7 +2,7 @@ import { create } from 'zustand';
 import { SensorNode, TelemetryLog, AlertItem, SystemStats, ThemeVariant, OptimizerParam } from './types';
 
 interface AppState {
-  currentView: 'landing' | 'dashboard' | 'route-sim' | 'sensors' | 'architect';
+  currentView: 'landing' | 'dashboard' | 'route-sim' | 'sensors' | 'architect' | 'ai-analysis';
   activeTheme: 'dark' | 'light';
   activeLayout: ThemeVariant;
   sensorNodes: SensorNode[];
@@ -35,7 +35,7 @@ interface AppState {
   activeToast: string | null;
 
   // Actions
-  setView: (view: 'landing' | 'dashboard' | 'route-sim' | 'sensors' | 'architect') => void;
+  setView: (view: 'landing' | 'dashboard' | 'route-sim' | 'sensors' | 'architect' | 'ai-analysis') => void;
   setTheme: (theme: 'dark' | 'light') => void;
   setLayout: (layout: ThemeVariant) => void;
   setSelectedNodeId: (id: string) => void;

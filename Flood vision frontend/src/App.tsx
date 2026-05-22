@@ -12,6 +12,7 @@ import Sidebar from './components/Sidebar';
 import Header from './components/Header';
 import LandingView from './components/LandingView';
 import DashboardView from './components/DashboardView';
+import AIAnalysisView from './components/AIAnalysisView';
 import RouteSimView from './components/RouteSimView';
 import SensorsView from './components/SensorsView';
 import ArchitectDocsView from './components/ArchitectDocsView';
@@ -48,6 +49,8 @@ export default function App() {
         return <LandingView />;
       case 'dashboard':
         return <DashboardView />;
+      case 'ai-analysis':
+        return <AIAnalysisView />;
       case 'route-sim':
         return <RouteSimView />;
       case 'sensors':
@@ -113,7 +116,7 @@ export default function App() {
         <Header />
 
         {/* Scrollable View boundaries */}
-        <main className="flex-1 min-h-0 flex flex-col relative overflow-hidden">
+        <main className="flex-1 min-h-0 flex flex-col relative overflow-y-auto overflow-x-hidden no-scrollbar">
           {renderCurrentView()}
         </main>
       </div>

@@ -34,6 +34,7 @@ export default function Header() {
   const menuLinks = [
     { view: 'landing' as const, label: 'Portal' },
     { view: 'dashboard' as const, label: 'Observer' },
+    { view: 'ai-analysis' as const, label: 'AI Analysis' },
     { view: 'route-sim' as const, label: 'Smart routing' },
     { view: 'sensors' as const, label: 'Telemetry Sync' },
   ];

@@ -7,6 +7,7 @@ import {
   LogOut,
   Sliders,
   Database,
+  Eye,
   Shield,
   Moon,
   Sun,
@@ -45,6 +46,7 @@ export default function Sidebar() {
   const menuItems = [
     { id: 'landing' as const, label: 'Intro Portal', icon: Shield },
     { id: 'dashboard' as const, label: 'Live Map Feed', icon: Map },
+    { id: 'ai-analysis' as const, label: 'AI Street Analysis', icon: Eye },
     { id: 'route-sim' as const, label: 'Route Optimizer', icon: Sliders },
     { id: 'sensors' as const, label: 'IoT Telemetry', icon: Database },
     { id: 'architect' as const, label: 'System Design', icon: BookOpen },
