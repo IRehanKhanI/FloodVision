@@ -23,4 +23,12 @@
     "allowImportingTsExtensions": true,
     "noEmit": true
   }
+  ,
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    "src/**/*.js",
+    "src/**/*.jsx",
+    "index.html"
+  ]
 }
