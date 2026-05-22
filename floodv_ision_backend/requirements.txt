@@ -1,0 +1,20 @@
+# ─── FloodVision Backend Dependencies ─────────────────────────────────────────
+# Install with:  pip install -r requirements.txt
+
+# Django core
+Django>=5.2,<5.3
+djangorestframework>=3.15,<4.0
+django-cors-headers>=4.3,<5.0
+
+# HTTP client (image fetching)
+requests>=2.31,<3.0
+
+# Computer Vision
+opencv-python>=4.9,<5.0
+numpy>=2.0
+
+# Image processing
+Pillow>=10.3,<11.0
+
+# YOLOv8 (auto-downloads yolov8n.pt on first run)
+ultralytics>=8.2,<9.0
