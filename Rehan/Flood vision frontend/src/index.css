@@ -1,0 +1,623 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap");
+@import "tailwindcss";
+
+/* =========================================================
+   DARK THEME (Default)
+   ========================================================= */
+:root {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+
+  /* Hydro-Aura Dark Palette */
+  --color-surface: #141313;
+  --color-surface-dim: #141313;
+  --color-surface-bright: #3a3939;
+  --color-surface-container-lowest: #0e0e0e;
+  --color-surface-container-low: #1c1b1b;
+  --color-surface-container: #201f1f;
+  --color-surface-container-high: #2a2a2a;
+  --color-surface-container-highest: #353434;
+  --color-on-surface: #e5e2e1;
+  --color-on-surface-variant: #c0c6d6;
+  --color-outline: #8b91a0;
+  --color-outline-variant: #414754;
+
+  --color-primary: #aac7ff;
+  --color-on-primary: #003064;
+  --color-primary-container: #3e90ff;
+  --color-on-primary-container: #002957;
+
+  --color-secondary: #47e266;
+  --color-on-secondary: #003910;
+  --color-secondary-container: #09bf49;
+
+  --color-tertiary: #ffb691;
+  --color-tertiary-container: #eb6a12;
+
+  --color-warning: #ffd60a;
+  --color-danger: #ff453a;
+  --color-brand-warning: #ffd60a;
+  --color-brand-danger: #ff453a;
+  --color-error: #ffb4ab;
+
+  /* Theme-aware card/panel colors */
+  --card-bg: rgba(14, 21, 41, 0.65);
+  --card-border: rgba(255, 255, 255, 0.16);
+  --card-shadow: 0 12px 36px 0 rgba(0, 0, 0, 0.6);
+  --text-primary: #e5e2e1;
+  --text-secondary: #c0c6d6;
+  --text-muted: #8b91a0;
+  --input-bg: rgba(0, 0, 0, 0.4);
+  --input-border: rgba(255, 255, 255, 0.12);
+  --badge-bg: rgba(0, 0, 0, 0.5);
+  --hover-bg: rgba(255, 255, 255, 0.05);
+  --code-bg: rgba(0, 0, 0, 0.6);
+}
+
+/* =========================================================
+   LIGHT THEME
+   ========================================================= */
+.light {
+  --color-surface: #f5f3f2;
+  --color-surface-dim: #e8e6e5;
+  --color-surface-bright: #ffffff;
+  --color-surface-container-lowest: #ffffff;
+  --color-surface-container-low: #f0eeed;
+  --color-surface-container: #eae8e7;
+  --color-surface-container-high: #e4e2e1;
+  --color-surface-container-highest: #dedddc;
+  --color-on-surface: #1c1b1b;
+  --color-on-surface-variant: #44474e;
+  --color-outline: #74777f;
+  --color-outline-variant: #c4c6d0;
+
+  --color-primary: #1a5fad;
+  --color-on-primary: #ffffff;
+  --color-primary-container: #d4e3ff;
+  --color-on-primary-container: #001c3b;
+
+  --color-secondary: #0d7a2f;
+  --color-on-secondary: #ffffff;
+  --color-secondary-container: #b8f5b4;
+
+  --color-tertiary: #b35200;
+  --color-tertiary-container: #ffdbc8;
+
+  --color-warning: #7d5800;
+  --color-danger: #ba1a1a;
+  --color-brand-warning: #7d5800;
+  --color-brand-danger: #ba1a1a;
+  --color-error: #ba1a1a;
+
+  --card-bg: rgba(255, 255, 255, 0.72);
+  --card-border: rgba(255, 255, 255, 0.45);
+  --card-shadow: 0 12px 36px 0 rgba(31, 41, 135, 0.08);
+  --text-primary: #1c1b1b;
+  --text-secondary: #44474e;
+  --text-muted: #74777f;
+  --input-bg: rgba(255, 255, 255, 0.6);
+  --input-border: rgba(0, 0, 0, 0.12);
+  --badge-bg: rgba(255, 255, 255, 0.7);
+  --hover-bg: rgba(0, 0, 0, 0.04);
+  --code-bg: rgba(0, 0, 0, 0.06);
+}
+
+/* =========================================================
+   GLASSMORPHIC DARK STYLES — Liquid Satin Gloss
+   ========================================================= */
+.glass-panel {
+  background: linear-gradient(
+    135deg,
+    rgba(14, 21, 41, 0.65) 0%,
+    rgba(9, 13, 26, 0.8) 100%
+  );
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  backdrop-filter: blur(28px) saturate(190%);
+  -webkit-backdrop-filter: blur(28px) saturate(190%);
+  box-shadow:
+    inset 1.5px 1.5px 0px 0px rgba(255, 255, 255, 0.28),
+    inset -1px -1px 0px 0px rgba(255, 255, 255, 0.04),
+    0 12px 36px 0 rgba(0, 0, 0, 0.6),
+    0 0 15px 1px rgba(170, 199, 255, 0.05);
+  position: relative;
+}
+
+/* Glass glare refraction layer */
+.glass-panel::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(
+    110deg,
+    rgba(255, 255, 255, 0.08) 0%,
+    rgba(255, 255, 255, 0.02) 25%,
+    rgba(255, 255, 255, 0) 60%
+  );
+  pointer-events: none;
+  z-index: 1;
+}
+
+.glass-stroke {
+  border-color: rgba(170, 199, 255, 0.22);
+}
+
+/* =========================================================
+   NEUMORPHIC DARK STYLES
+   ========================================================= */
+.neu-extrude {
+  background: #141313;
+  box-shadow:
+    -4px -4px 10px rgba(255, 255, 255, 0.03),
+    4px 4px 10px rgba(0, 0, 0, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.02);
+}
+
+.neu-recess {
+  background: #141313;
+  box-shadow:
+    inset -4px -4px 8px rgba(255, 255, 255, 0.03),
+    inset 4px 4px 8px rgba(0, 0, 0, 0.8);
+  border: 1px solid rgba(0, 0, 0, 0.5);
+}
+
+/* =========================================================
+   LIGHT MODE — Glassmorphic Pearlescent Liquid Glass
+   ========================================================= */
+.light .glass-panel {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.72) 0%,
+    rgba(240, 246, 255, 0.82) 100%
+  );
+  border: 1px solid rgba(255, 255, 255, 0.65);
+  backdrop-filter: blur(28px) saturate(180%);
+  -webkit-backdrop-filter: blur(28px) saturate(180%);
+  box-shadow:
+    inset 1px 1px 0px 0px rgba(255, 255, 255, 0.85),
+    0 8px 32px 0 rgba(31, 41, 135, 0.1),
+    0 0 10px 1px rgba(71, 226, 102, 0.04);
+}
+
+.light .glass-panel::before {
+  background: linear-gradient(
+    110deg,
+    rgba(255, 255, 255, 0.35) 0%,
+    rgba(255, 255, 255, 0.08) 30%,
+    rgba(255, 255, 255, 0) 70%
+  );
+}
+
+.light .glass-stroke {
+  border-color: rgba(26, 95, 173, 0.18);
+}
+
+.light .neu-extrude {
+  background: #f0eeed;
+  box-shadow:
+    -4px -4px 10px rgba(255, 255, 255, 0.9),
+    4px 4px 10px rgba(0, 0, 0, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+}
+
+.light .neu-recess {
+  background: #e4e2e1;
+  box-shadow:
+    inset -4px -4px 8px rgba(255, 255, 255, 0.9),
+    inset 4px 4px 8px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(0, 0, 0, 0.04);
+}
+
+/* =========================================================
+   THEME-AWARE UTILITY CLASSES
+   ========================================================= */
+.theme-text {
+  color: var(--text-primary);
+}
+
+.theme-text-secondary {
+  color: var(--text-secondary);
+}
+
+.theme-text-muted {
+  color: var(--text-muted);
+}
+
+.theme-card {
+  background: var(--card-bg);
+  border-color: var(--card-border);
+}
+
+.theme-input {
+  background: var(--input-bg);
+  border-color: var(--input-border);
+  color: var(--text-primary);
+}
+
+.theme-hover:hover {
+  background: var(--hover-bg);
+}
+
+.theme-code {
+  background: var(--code-bg);
+}
+
+/* Risk-level badge colors (visible in both themes) */
+.risk-green {
+  color: #22c55e;
+}
+.risk-yellow {
+  color: #eab308;
+}
+.risk-red {
+  color: #ef4444;
+}
+.risk-green-bg {
+  background: rgba(34, 197, 94, 0.15);
+  border: 1px solid rgba(34, 197, 94, 0.3);
+}
+.risk-yellow-bg {
+  background: rgba(234, 179, 8, 0.15);
+  border: 1px solid rgba(234, 179, 8, 0.3);
+}
+.risk-red-bg {
+  background: rgba(239, 68, 68, 0.15);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+}
+
+.light .risk-green {
+  color: #16a34a;
+}
+.light .risk-yellow {
+  color: #ca8a04;
+}
+.light .risk-red {
+  color: #dc2626;
+}
+
+/* =========================================================
+   ANIMATED LIQUID FLUID BLOBS
+   ========================================================= */
+@keyframes liquid-blob-one {
+  0% {
+    transform: translate(0px, 0px) scale(1) rotate(0deg);
+  }
+  33% {
+    transform: translate(120px, -80px) scale(1.2) rotate(120deg);
+  }
+  66% {
+    transform: translate(-80px, 60px) scale(0.85) rotate(240deg);
+  }
+  100% {
+    transform: translate(0px, 0px) scale(1) rotate(360deg);
+  }
+}
+
+@keyframes liquid-blob-two {
+  0% {
+    transform: translate(0px, 0px) scale(1.15) rotate(360deg);
+  }
+  33% {
+    transform: translate(-90px, 90px) scale(0.8) rotate(240deg);
+  }
+  66% {
+    transform: translate(100px, -50px) scale(1.15) rotate(125deg);
+  }
+  100% {
+    transform: translate(0px, 0px) scale(1.15) rotate(0deg);
+  }
+}
+
+@keyframes liquid-blob-three {
+  0% {
+    transform: translate(0px, 0px) scale(0.9);
+  }
+  50% {
+    transform: translate(50px, 60px) scale(1.2) rotate(180deg);
+  }
+  100% {
+    transform: translate(0px, 0px) scale(0.9);
+  }
+}
+
+.liquid-blob-1 {
+  animation: liquid-blob-one 22s ease-in-out infinite;
+}
+.liquid-blob-2 {
+  animation: liquid-blob-two 26s ease-in-out infinite;
+}
+.liquid-blob-3 {
+  animation: liquid-blob-three 18s ease-in-out infinite;
+}
+
+/* Light mode blobs — warmer tones */
+.light .liquid-blob-1 {
+  background: rgba(26, 95, 173, 0.08) !important;
+}
+.light .liquid-blob-2 {
+  background: rgba(13, 122, 47, 0.06) !important;
+}
+.light .liquid-blob-3 {
+  background: rgba(179, 82, 0, 0.05) !important;
+}
+
+/* =========================================================
+   ANIMATIONS & UTILITIES
+   ========================================================= */
+@keyframes spin-slow {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+.animate-spin-slow {
+  animation: spin-slow 8s linear infinite;
+}
+
+@keyframes pulse-danger {
+  0% {
+    box-shadow: 0 0 0 0 rgba(255, 69, 58, 0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(255, 69, 58, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(255, 69, 58, 0);
+  }
+}
+.pulse-danger {
+  animation: pulse-danger 2s infinite;
+}
+
+@keyframes pulse-secondary {
+  0% {
+    box-shadow: 0 0 0 0 rgba(71, 226, 102, 0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(71, 226, 102, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(71, 226, 102, 0);
+  }
+}
+.pulse-secondary {
+  animation: pulse-secondary 2.5s infinite;
+}
+
+@keyframes pulse-warning {
+  0% {
+    box-shadow: 0 0 0 0 rgba(255, 214, 10, 0.6);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(255, 214, 10, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(255, 214, 10, 0);
+  }
+}
+.pulse-warning {
+  animation: pulse-warning 2.2s infinite;
+}
+
+@keyframes ticker {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+.animate-ticker {
+  animation: ticker 45s linear infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+.animate-shimmer {
+  background: linear-gradient(
+    90deg,
+    transparent 25%,
+    rgba(255, 255, 255, 0.08) 50%,
+    transparent 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 2s ease-in-out infinite;
+}
+.light .animate-shimmer {
+  background: linear-gradient(
+    90deg,
+    transparent 25%,
+    rgba(0, 0, 0, 0.04) 50%,
+    transparent 75%
+  );
+  background-size: 200% 100%;
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.animate-fade-in-up {
+  animation: fade-in-up 0.6s ease-out forwards;
+}
+
+@keyframes scale-in {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+.animate-scale-in {
+  animation: scale-in 0.4s ease-out forwards;
+}
+
+@keyframes glow-pulse {
+  0%,
+  100% {
+    filter: drop-shadow(0 0 6px currentColor);
+  }
+  50% {
+    filter: drop-shadow(0 0 16px currentColor);
+  }
+}
+.animate-glow-pulse {
+  animation: glow-pulse 2s ease-in-out infinite;
+}
+
+/* Bounce subtle for toasts */
+@keyframes bounce-subtle {
+  0% {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  50% {
+    transform: translateY(-4px);
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+.animate-bounce-subtle {
+  animation: bounce-subtle 0.5s ease-out;
+}
+
+/* =========================================================
+   SCROLLBAR STYLING
+   ========================================================= */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Custom themed scrollbar for elements that need it */
+.themed-scrollbar::-webkit-scrollbar {
+  width: 6px;
+}
+.themed-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+.themed-scrollbar::-webkit-scrollbar-thumb {
+  background: var(--color-outline-variant);
+  border-radius: 3px;
+}
+.themed-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: var(--color-outline);
+}
+
+/* =========================================================
+   LEAFLET MAP OVERRIDES (for dark theme)
+   ========================================================= */
+.leaflet-container {
+  background: var(--color-surface) !important;
+  font-family: var(--font-sans) !important;
+}
+
+/* =========================================================
+   THEME TOKEN HELPERS
+   ========================================================= */
+.text-on-surface {
+  color: var(--text-primary);
+}
+.text-on-surface-variant {
+  color: var(--text-secondary);
+}
+.text-outline {
+  color: var(--text-muted);
+}
+.text-brand-warning {
+  color: var(--color-warning);
+}
+.text-brand-danger {
+  color: var(--color-danger);
+}
+.bg-surface-container {
+  background: var(--color-surface-container);
+}
+.bg-surface-low {
+  background: var(--color-surface-container-low);
+}
+.bg-surface-lowest {
+  background: var(--color-surface-container-lowest);
+}
+
+/* Light mode overrides for hardcoded utility colors */
+.light .text-white {
+  color: var(--text-primary) !important;
+}
+.light .bg-\[\#0e0e0e\] {
+  background: var(--color-surface-container-lowest) !important;
+}
+.light .text-\[\#8b91a0\] {
+  color: var(--text-muted) !important;
+}
+.light .text-\[\#8a9\] {
+  color: var(--text-muted) !important;
+}
+.light .text-\[\#aac7ff\] {
+  color: var(--color-primary) !important;
+}
+
+.dark .leaflet-tile {
+  filter: brightness(0.7) contrast(1.1) saturate(0.8) hue-rotate(180deg)
+    invert(1);
+}
+
+.leaflet-control-zoom a {
+  background: var(--card-bg) !important;
+  color: var(--text-primary) !important;
+  border-color: var(--card-border) !important;
+  backdrop-filter: blur(12px);
+}
+
+/* =========================================================
+   SMOOTH THEME TRANSITION
+   ========================================================= */
+*,
+*::before,
+*::after {
+  transition-property:
+    background-color, border-color, color, fill, stroke, box-shadow;
+  transition-duration: 0.3s;
+  transition-timing-function: ease;
+}
+
+/* Opt out of transition on elements that don't need it */
+.no-transition,
+.no-transition * {
+  transition: none !important;
+}
