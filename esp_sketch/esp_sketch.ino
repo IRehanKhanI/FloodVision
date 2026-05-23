@@ -12,8 +12,8 @@
 //   2. Flash to ESP32 via Arduino IDE (Board: "ESP32 Dev Module").
 //   3. Open Serial Monitor at 115200 baud to watch logs.
 // ─────────────────────────────────────────────────────────────────────────────
-
-#include <WiFi.h>
+ 
+#include <WiFi.h> 
 #include <HTTPClient.h>
 
 // ─── WiFi credentials (laptop hotspot) ───────────────────────────────────────
